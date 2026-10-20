@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    # Connection strings come from repository secrets (Settings > Secrets and variables > Actions).
+    # GitHub masks them as *** in the logs; no password is stored in this file.
+    env:
+      RUNNER_DSN: ${{ secrets.RUNNER_DSN }}
+      APP_DSN: ${{ secrets.APP_DSN }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: No secrets file is committed
+        run: |
+          if git ls-files | grep -E '(^|/)(secrets\.toml|\.env)$'; then
+            echo "A secrets file is tracked by git"; exit 1
+          fi
+
+      - name: Live database connection and role security check
+        run: python scripts/check_connection.py
+
+      - name: Tests (SQL runner, quiz answers, grader, saving)
+        run: pytest -v

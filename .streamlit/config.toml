@@ -1,0 +1,15 @@
+[theme]
+base = "light"
+primaryColor = "#B5473A"            # brick red (Tali's cardigan)
+backgroundColor = "#F9F2E0"         # paper cream from the character sheet
+secondaryBackgroundColor = "#F1E5CB"
+textColor = "#2F2A28"               # charcoal ink
+
+[client]
+toolbarMode = "minimal"
+
+[browser]
+gatherUsageStats = false
+
+[server]
+enableStaticServing = true          # serves ./static at app/static/ (character art)

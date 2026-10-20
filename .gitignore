@@ -1,0 +1,20 @@
+# Secrets: never commit
+.streamlit/secrets.toml
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# macOS
+.DS_Store
+
+# Local editor/tool settings
+.claude/
+
+# Original full-size artwork (web versions live in static/)
+charachters images/
