@@ -244,7 +244,8 @@ code { font-family: 'JetBrains Mono', monospace; background: var(--mustard-soft)
 .clue .n { width: 1.55rem; height: 1.55rem; border-radius: 8px; display: grid; place-items: center; font-weight: 800; font-size: .78rem;
            background: var(--card-2); border: 1.5px solid var(--line); flex-shrink: 0; }
 .clue.solved .n { background: var(--sage); border-color: var(--sage); color: white; }
-.clue .p { margin-left: auto; font-size: .72rem; color: var(--ink-soft); font-weight: 800; }
+.clue .t { flex: 1; min-width: 0; line-height: 1.3; }
+.clue .p { margin-left: auto; font-size: .72rem; color: var(--ink-soft); font-weight: 800; white-space: nowrap; flex-shrink: 0; }
 
 /* ---------- Streamlit widgets ---------- */
 .stButton > button, .stFormSubmitButton > button {
@@ -667,7 +668,7 @@ def profile(email: str) -> None:
 def mission_list(missions: list[tuple[int, str, int, bool]]) -> None:
     clues = "".join(
         f'<div class="clue{" solved" if solved else ""}"><span class="n">{"✓" if solved else n}</span>'
-        f'{html.escape(title)}<span class="p">{pts} pts</span></div>'
+        f'<span class="t">{html.escape(title)}</span><span class="p">{pts} pts</span></div>'
         for n, title, pts, solved in missions
     )
     _render(f'<div class="board">{clues}</div>')
