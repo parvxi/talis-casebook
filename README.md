@@ -20,9 +20,7 @@ Instead of solving unrelated questions, students follow a story, discover clues,
 
 Meet **Tali**, our curious investigator, and **Pip**, her tiny companion. Together, they guide students through the investigation and help make learning SQL a little more engaging.
 
-This project was created for **IDS 706: Data Engineering Systems at Duke University**.
-
-## 🧪 Quick Start for Graders
+## Quick Start for Graders
 
 1. Open the [live app](https://talis-casebook-kj8mu6rfeej47tb8htkz6u.streamlit.app/). If Streamlit shows a "wake up" screen, click it and wait about 30 seconds.
 2. Click **Start investigating** and create an account with any email and a password of 6+ characters. Email confirmation is turned off, so you are signed in immediately.
